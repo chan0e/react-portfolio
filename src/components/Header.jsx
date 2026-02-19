@@ -1,4 +1,4 @@
-﻿import { ThemeToggle } from './ThemeToggle';
+import { ThemeToggle } from './ThemeToggle';
 import { portfolioData } from '../data/portfolioData';
 
 export function Header({ theme, onToggle }) {
@@ -10,13 +10,31 @@ export function Header({ theme, onToggle }) {
         </a>
         <nav className="hidden gap-5 md:flex" aria-label="메인 메뉴">
           {portfolioData.navItems.map((item) => (
-            <a key={item.id} href={`#${item.id}`} className="text-sm text-muted transition hover:text-text">
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              className="text-sm text-muted transition hover:text-text"
+            >
               {item.label}
             </a>
           ))}
         </nav>
         <ThemeToggle theme={theme} onToggle={onToggle} />
       </div>
+      <nav
+        className="section-wrap flex gap-2 overflow-x-auto pb-3 md:hidden"
+        aria-label="모바일 메뉴"
+      >
+        {portfolioData.navItems.map((item) => (
+          <a
+            key={item.id}
+            href={`#${item.id}`}
+            className="shrink-0 rounded-full border border-slate-300/50 px-3 py-1 text-xs text-muted dark:border-slate-700"
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
     </header>
   );
 }
