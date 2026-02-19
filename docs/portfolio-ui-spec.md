@@ -1,28 +1,28 @@
-﻿# React + Vite Portfolio UI Spec
+﻿# React + Vite 포트폴리오 UI 스펙 문서
 
-## 1. Goal
-- Build a **frontend-only portfolio UI** with React + Vite.
-- Focus on a modern, recruiter-friendly UX that works well on desktop and mobile.
-- Backend/API integration is explicitly out of scope for v1.
+## 1. 목표
+- React + Vite 기반의 **프론트엔드 전용 포트폴리오 UI**를 구축한다.
+- 채용 담당자/협업자를 기준으로 빠르게 이해 가능한 구조와 가독성을 제공한다.
+- v1 범위에서는 백엔드/API 연동을 제외한다.
 
-## 2. Scope (v1)
-- Single-page portfolio with section-based navigation.
-- Dark mode support (manual toggle + system preference fallback).
-- Fully responsive layout (mobile-first).
-- Tailwind CSS based styling system.
-- Reusable component architecture.
-- Basic accessibility and performance baseline.
+## 2. 범위(v1)
+- 섹션 기반 단일 페이지 포트폴리오
+- 다크 모드 지원(수동 토글 + 시스템 설정 반영)
+- 모바일 우선 반응형 레이아웃
+- Tailwind CSS 기반 스타일링
+- 재사용 가능한 컴포넌트 구조
+- 기본 접근성/성능 기준 충족
 
-## 3. Tech Stack
-- Framework: `React 18+`
-- Bundler: `Vite`
-- Styling: `Tailwind CSS`
-- Icons: `lucide-react` (or `heroicons`)
-- Animation: CSS + light utility library (`framer-motion` optional)
-- Package manager: `npm`
+## 3. 기술 스택
+- 프레임워크: `React 18+`
+- 번들러: `Vite`
+- 스타일링: `Tailwind CSS`
+- 아이콘: `lucide-react` 또는 `heroicons`
+- 애니메이션: CSS + 경량 라이브러리(`framer-motion` 선택)
+- 패키지 매니저: `npm`
 
-## 4. Information Architecture
-Sections (single-page):
+## 4. 정보 구조(IA)
+단일 페이지 섹션 구성:
 1. Hero
 2. About
 3. Skills
@@ -30,63 +30,62 @@ Sections (single-page):
 5. Experience
 6. Contact
 
-Global UI:
-- Sticky header navigation
-- Theme toggle (light/dark)
-- Footer with social links / copyright
+공통 UI:
+- Sticky Header 네비게이션
+- 테마 토글(라이트/다크)
+- Footer(소셜 링크/저작권)
 
-## 5. Layout Spec
-### 5.1 Breakpoints
-- `sm`: 640px+
-- `md`: 768px+
-- `lg`: 1024px+
-- `xl`: 1280px+
+## 5. 레이아웃 스펙
+### 5.1 브레이크포인트
+- `sm`: 640px 이상
+- `md`: 768px 이상
+- `lg`: 1024px 이상
+- `xl`: 1280px 이상
 
-### 5.2 Container Rules
-- Max width: `1200px` (or Tailwind `max-w-6xl` ~ `max-w-7xl`)
-- Horizontal padding:
-  - Mobile: `px-4`
-  - Tablet: `px-6`
-  - Desktop: `px-8`
+### 5.2 컨테이너 규칙
+- 최대 너비: `1200px` (Tailwind 기준 `max-w-6xl` ~ `max-w-7xl`)
+- 수평 패딩:
+  - 모바일: `px-4`
+  - 태블릿: `px-6`
+  - 데스크탑: `px-8`
 
-### 5.3 Section Rhythm
-- Vertical spacing:
-  - Mobile: `py-16`
-  - Desktop: `py-24`
-- Clear section titles + short supporting text.
+### 5.3 섹션 간격
+- 세로 여백:
+  - 모바일: `py-16`
+  - 데스크탑: `py-24`
+- 모든 섹션은 제목 + 보조 설명 구조를 기본으로 한다.
 
-## 6. Theme (Dark Mode)
-### 6.1 Behavior
-- Default priority:
-  1. User saved preference (`localStorage`)
-  2. System preference (`prefers-color-scheme`)
-  3. Fallback: dark
-- Toggle button in header.
+## 6. 테마(다크 모드)
+### 6.1 동작 규칙
+초기 테마 우선순위:
+1. 사용자 저장 설정(`localStorage`)
+2. 시스템 설정(`prefers-color-scheme`)
+3. 기본값: 다크
 
-### 6.2 Implementation
-- Tailwind `darkMode: 'class'`
-- Apply/remove `dark` class on `document.documentElement`.
-- Maintain semantic color tokens via CSS variables.
+### 6.2 구현 방식
+- Tailwind 설정: `darkMode: 'class'`
+- `document.documentElement`에 `dark` 클래스 적용/해제
+- CSS 변수 기반 시맨틱 컬러 토큰 사용
 
-### 6.3 Color Direction (trend)
-- Avoid plain black/white contrast.
-- Use layered neutrals + one accent color.
-- Suggested palette:
-  - Background: warm neutral dark (`#0E1116`)
-  - Surface: `#151A22`
-  - Text primary: `#E8EDF5`
-  - Accent: cyan/teal (`#2DD4BF` range)
+### 6.3 컬러 방향(트렌드 반영)
+- 완전 흑백 대비 대신 레이어드 뉴트럴 사용
+- 브랜드 포인트용 단일 액센트 컬러 사용
+- 권장 팔레트:
+  - 배경: `#0E1116`
+  - 표면: `#151A22`
+  - 본문 텍스트: `#E8EDF5`
+  - 액센트: `#2DD4BF` 계열
 
-## 7. Typography
-- Headline font: expressive geometric sans (e.g., `Space Grotesk`)
-- Body font: readable sans with Korean support (e.g., `IBM Plex Sans KR`, `Pretendard`)
-- Scale:
+## 7. 타이포그래피
+- 제목 폰트: 개성 있는 기하학 계열 산세리프(예: `Space Grotesk`)
+- 본문 폰트: 한글 가독성 우수 폰트(예: `IBM Plex Sans KR`, `Pretendard`)
+- 권장 스케일:
   - H1: `text-4xl md:text-6xl`
   - H2: `text-2xl md:text-4xl`
   - Body: `text-sm md:text-base`
 
-## 8. Component Architecture
-Recommended folder structure:
+## 8. 컴포넌트 아키텍처
+권장 폴더 구조:
 
 ```txt
 src/
@@ -120,76 +119,76 @@ src/
   main.jsx
 ```
 
-## 9. Data Model (v1)
-`portfolioData.js` should contain:
-- `profile`: name, role, short bio, location
-- `skills`: grouped by category (Frontend, Tooling, etc.)
-- `projects`: title, summary, stack, role, links, image
-- `experience`: company, period, achievements
-- `contact`: email, github, linkedin, blog
+## 9. 데이터 모델(v1)
+`portfolioData.js`에 다음 정보를 구조화한다.
+- `profile`: 이름, 직무, 한 줄 소개, 위치
+- `skills`: 카테고리별 스킬(Frontend, Tooling 등)
+- `projects`: 제목, 요약, 기술 스택, 역할, 링크, 이미지
+- `experience`: 회사, 기간, 성과
+- `contact`: 이메일, GitHub, LinkedIn, 블로그
 
-## 10. UX Details
-- Smooth scroll for section navigation.
-- Active section highlight in header.
-- Project cards:
-  - tech tags
-  - key impact metric (if available)
-  - CTA buttons (Demo / GitHub)
-- Contact section with clear primary CTA.
+## 10. UX 디테일
+- 섹션 이동 시 스무스 스크롤 적용
+- 현재 섹션 활성 상태를 헤더에 표시
+- 프로젝트 카드에 다음 정보 포함:
+  - 기술 태그
+  - 핵심 임팩트(수치 가능 시)
+  - CTA 버튼(Demo / GitHub)
+- Contact 섹션은 명확한 1차 액션(연락 유도)을 제공
 
-## 11. Accessibility (A11y)
-- Use semantic landmarks (`header`, `main`, `section`, `footer`).
-- Keyboard navigable menu and controls.
-- Color contrast WCAG AA target.
-- All icon-only buttons require `aria-label`.
-- Respect reduced motion preference.
+## 11. 접근성(A11y)
+- 시맨틱 랜드마크(`header`, `main`, `section`, `footer`) 사용
+- 키보드 내비게이션 가능해야 함
+- 색 대비 WCAG AA 수준 목표
+- 아이콘 전용 버튼에 `aria-label` 필수
+- `prefers-reduced-motion` 존중
 
-## 12. Performance
-- Keep hero assets optimized (WebP/AVIF where possible).
-- Lazy-load non-critical images.
-- Avoid heavy animation on initial render.
-- Lighthouse target (local):
+## 12. 성능
+- Hero 이미지 최적화(WebP/AVIF 우선)
+- 비핵심 이미지 lazy loading
+- 초기 렌더에서 과도한 애니메이션 지양
+- 로컬 Lighthouse 목표:
   - Performance 90+
   - Accessibility 90+
   - Best Practices 90+
   - SEO 90+
 
-## 13. Development Conventions
-- Use function components + hooks.
-- Keep presentational components stateless when possible.
-- Keep section-level content driven by data file.
-- Naming:
-  - Components: `PascalCase`
-  - Hooks: `useSomething`
-  - Data/constants: `camelCase` / `UPPER_SNAKE_CASE`
+## 13. 개발 컨벤션
+- 함수형 컴포넌트 + 훅 사용
+- 프레젠테이셔널 컴포넌트는 가능한 상태 비보유
+- 섹션 콘텐츠는 데이터 파일 중심 관리
+- 네이밍 규칙:
+  - 컴포넌트: `PascalCase`
+  - 훅: `useSomething`
+  - 데이터/상수: `camelCase` / `UPPER_SNAKE_CASE`
 
-## 14. Milestones
-1. **M1 - Foundation**
-   - Vite + React + Tailwind setup
-   - global theme tokens + dark mode toggle
-   - base layout + header/footer
-2. **M2 - Core Sections**
+## 14. 마일스톤
+1. **M1 - 기반 구축**
+   - Vite + React + Tailwind 세팅
+   - 전역 테마 토큰 + 다크모드 토글
+   - 기본 레이아웃(헤더/푸터)
+2. **M2 - 핵심 섹션 구현**
    - Hero/About/Skills/Projects/Experience/Contact
-   - responsive polish
-3. **M3 - Quality**
-   - accessibility pass
-   - animation tuning
-   - performance optimization
-4. **M4 - Deploy Ready**
-   - final content replacement
-   - metadata/OG setup
-   - deploy (Vercel/Netlify)
+   - 반응형 디테일 보완
+3. **M3 - 품질 개선**
+   - 접근성 점검
+   - 애니메이션 튜닝
+   - 성능 최적화
+4. **M4 - 배포 준비**
+   - 최종 콘텐츠 반영
+   - 메타/OG 정리
+   - 배포(Vercel/Netlify)
 
-## 15. Out of Scope (v1)
-- Backend APIs
-- CMS/admin dashboard
-- Auth/user session
-- Multilingual support (can be v2)
+## 15. 제외 범위(v1)
+- 백엔드 API
+- CMS/관리자 대시보드
+- 인증/세션
+- 다국어 지원(v2 후보)
 
-## 16. Next Action
-- Start with `M1 - Foundation` using this spec as source of truth.
-- First implementation PR should include:
-  - React+Vite scaffold
-  - Tailwind setup
-  - theme toggle
-  - header + hero + footer responsive skeleton
+## 16. 즉시 다음 작업
+- 본 문서를 기준으로 `M1 - 기반 구축`부터 진행한다.
+- 첫 구현 PR에는 다음이 포함되어야 한다.
+  - React+Vite 스캐폴딩
+  - Tailwind 설정
+  - 다크모드 토글
+  - 헤더 + Hero + 푸터 반응형 스켈레톤
