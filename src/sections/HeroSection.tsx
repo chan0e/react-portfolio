@@ -25,6 +25,14 @@ export function HeroSection(): JSX.Element {
           </div>
         </div>
         <aside className="hero-panel">
+          <div className="profile-photo-wrap">
+            <img
+              src={portfolioData.profile.photoSrc}
+              alt={portfolioData.profile.photoAlt}
+              className="profile-photo"
+              loading="eager"
+            />
+          </div>
           <p className="text-xs uppercase tracking-widest text-muted">Profile Snapshot</p>
           <h2 className="mt-2 text-xl font-bold">{portfolioData.profile.role}</h2>
           <p className="mt-2 text-sm text-muted">{portfolioData.profile.location}</p>

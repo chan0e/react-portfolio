@@ -12,6 +12,8 @@ export interface Profile {
   summary: string;
   location: string;
   bio: string[];
+  photoSrc: string;
+  photoAlt: string;
 }
 
 export interface SkillGroup {

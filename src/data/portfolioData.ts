@@ -8,6 +8,8 @@ export const portfolioData: PortfolioData = {
     summary:
       '비즈니스 목표와 사용자 경험 사이의 균형을 맞추며, 유지보수 가능한 UI 아키텍처를 만드는 데 집중합니다.',
     location: 'Seoul, KR',
+    photoSrc: '/images/profile/profile-photo.png',
+    photoAlt: '프로필 사진 자리',
     bio: [
       '디자인 의도를 코드로 정확하게 전달하고, 반복 가능한 컴포넌트 시스템을 선호합니다.',
       '기획, 디자인, 개발 간의 커뮤니케이션 비용을 줄이는 UI 설계에 강점을 가지고 있습니다.',

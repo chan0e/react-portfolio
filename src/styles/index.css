@@ -213,6 +213,25 @@
     background-color: rgb(var(--color-surface-soft) / 0.7);
   }
 
+  .profile-photo-wrap {
+    @apply mb-4 overflow-hidden rounded-2xl border;
+    border-color: rgb(var(--color-accent) / 0.32);
+    background:
+      linear-gradient(
+        120deg,
+        rgb(var(--color-accent) / 0.15),
+        rgb(var(--color-accent-strong) / 0.15)
+      );
+    box-shadow:
+      0 12px 28px rgb(2 6 23 / 0.2),
+      inset 0 1px 0 rgb(255 255 255 / 0.18);
+  }
+
+  .profile-photo {
+    @apply block h-full w-full object-cover;
+    aspect-ratio: 4 / 3;
+  }
+
   .timeline-list {
     @apply mt-3 list-disc space-y-1 pl-5 text-sm text-muted;
   }
