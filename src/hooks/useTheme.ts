@@ -1,8 +1,9 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import type { Theme } from '../types/portfolio';
 
 const STORAGE_KEY = 'theme';
 
-function getInitialTheme() {
+function getInitialTheme(): Theme {
   if (typeof window === 'undefined') {
     return 'dark';
   }
@@ -16,8 +17,8 @@ function getInitialTheme() {
   return prefersDark ? 'dark' : 'light';
 }
 
-export function useTheme() {
-  const [theme, setTheme] = useState(getInitialTheme);
+export function useTheme(): { theme: Theme; toggleTheme: () => void } {
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -25,7 +26,7 @@ export function useTheme() {
     window.localStorage.setItem(STORAGE_KEY, theme);
   }, [theme]);
 
-  const toggleTheme = () => {
+  const toggleTheme = (): void => {
     setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
   };
 

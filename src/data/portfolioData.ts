@@ -1,4 +1,6 @@
-export const portfolioData = {
+import type { PortfolioData } from '../types/portfolio';
+
+export const portfolioData: PortfolioData = {
   profile: {
     name: '홍길동',
     role: 'Frontend Developer',

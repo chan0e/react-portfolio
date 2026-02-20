@@ -1,7 +1,13 @@
 import { ThemeToggle } from './ThemeToggle';
 import { portfolioData } from '../data/portfolioData';
+import type { Theme } from '../types/portfolio';
 
-export function Header({ theme, onToggle }) {
+interface HeaderProps {
+  theme: Theme;
+  onToggle: () => void;
+}
+
+export function Header({ theme, onToggle }: HeaderProps): JSX.Element {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-300/30 bg-bg/80 backdrop-blur-md dark:border-slate-700/50">
       <div className="section-wrap flex h-16 items-center justify-between">

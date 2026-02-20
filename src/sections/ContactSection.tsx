@@ -1,7 +1,7 @@
 import { SectionTitle } from '../components/SectionTitle';
 import { portfolioData } from '../data/portfolioData';
 
-export function ContactSection() {
+export function ContactSection(): JSX.Element {
   return (
     <section
       id="contact"

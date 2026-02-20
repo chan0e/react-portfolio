@@ -1,4 +1,10 @@
-export function ProjectCard({ project }) {
+import type { Project } from '../../types/portfolio';
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+export function ProjectCard({ project }: ProjectCardProps): JSX.Element {
   return (
     <article className="rounded-2xl border border-slate-300/40 bg-surface/90 p-5 dark:border-slate-700">
       <div className="flex items-start justify-between gap-4">

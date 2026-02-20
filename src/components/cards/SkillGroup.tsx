@@ -1,4 +1,10 @@
-export function SkillGroup({ group }) {
+import type { SkillGroup as SkillGroupModel } from '../../types/portfolio';
+
+interface SkillGroupProps {
+  group: SkillGroupModel;
+}
+
+export function SkillGroup({ group }: SkillGroupProps): JSX.Element {
   return (
     <article className="rounded-2xl border border-slate-300/40 bg-surface/90 p-5 dark:border-slate-700">
       <h3 className="text-base font-semibold">{group.category}</h3>

@@ -2,7 +2,7 @@ import { SectionTitle } from '../components/SectionTitle';
 import { ProjectCard } from '../components/cards/ProjectCard';
 import { portfolioData } from '../data/portfolioData';
 
-export function ProjectsSection() {
+export function ProjectsSection(): JSX.Element {
   return (
     <section
       id="projects"

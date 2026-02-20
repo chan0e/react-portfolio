@@ -1,4 +1,9 @@
-﻿export function SectionTitle({ title, description }) {
+interface SectionTitleProps {
+  title: string;
+  description: string;
+}
+
+export function SectionTitle({ title, description }: SectionTitleProps): JSX.Element {
   return (
     <div className="mb-8 md:mb-10">
       <h2 className="text-2xl font-bold md:text-4xl">{title}</h2>

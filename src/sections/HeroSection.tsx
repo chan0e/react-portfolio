@@ -1,6 +1,6 @@
 import { portfolioData } from '../data/portfolioData';
 
-export function HeroSection() {
+export function HeroSection(): JSX.Element {
   return (
     <section id="hero" className="section-wrap section-space">
       <p className="text-sm font-medium uppercase tracking-widest text-accent">

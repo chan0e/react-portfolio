@@ -2,7 +2,7 @@ import { SectionTitle } from '../components/SectionTitle';
 import { SkillGroup } from '../components/cards/SkillGroup';
 import { portfolioData } from '../data/portfolioData';
 
-export function SkillsSection() {
+export function SkillsSection(): JSX.Element {
   return (
     <section
       id="skills"
