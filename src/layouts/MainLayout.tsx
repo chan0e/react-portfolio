@@ -15,7 +15,7 @@ interface MainLayoutProps {
 
 export function MainLayout({ theme, onToggleTheme }: MainLayoutProps): JSX.Element {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-clip bg-bg text-text">
       <Header theme={theme} onToggle={onToggleTheme} />
       <main>
         <HeroSection />

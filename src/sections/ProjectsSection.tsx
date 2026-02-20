@@ -6,13 +6,13 @@ export function ProjectsSection(): JSX.Element {
   return (
     <section
       id="projects"
-      className="section-wrap section-space border-t border-slate-300/20 dark:border-slate-700/40"
+      className="section-wrap section-space section-divider"
     >
       <SectionTitle
         title="Projects"
         description="핵심 프로젝트, 기술 선택, 성과를 카드 단위로 정리했습니다."
       />
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid gap-4 fade-up lg:grid-cols-2">
         {portfolioData.projects.map((project) => (
           <ProjectCard key={project.title} project={project} />
         ))}

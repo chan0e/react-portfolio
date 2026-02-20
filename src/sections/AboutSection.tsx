@@ -5,13 +5,13 @@ export function AboutSection(): JSX.Element {
   return (
     <section
       id="about"
-      className="section-wrap section-space border-t border-slate-300/20 dark:border-slate-700/40"
+      className="section-wrap section-space section-divider"
     >
       <SectionTitle
         title="About"
         description="문제 정의부터 구현, 개선까지 책임지는 개발 문화를 지향합니다."
       />
-      <div className="space-y-4">
+      <div className="glass-card card-lift space-y-4 p-6 md:p-7">
         {portfolioData.profile.bio.map((line) => (
           <p key={line} className="max-w-3xl text-sm leading-7 text-muted md:text-base">
             {line}
