@@ -108,7 +108,7 @@ export function ProjectDetailModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby={modalTitleId}
-        className="relative z-10 w-full max-w-2xl rounded-2xl border border-slate-300/45 bg-surface/95 p-6 shadow-2xl dark:border-slate-600/50 dark:bg-surface-soft/95 md:p-8"
+        className="relative z-10 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-slate-300/45 bg-surface/95 p-6 shadow-2xl dark:border-slate-600/50 dark:bg-surface-soft/95 md:p-8"
       >
         <button
           ref={closeButtonRef}
@@ -120,48 +120,50 @@ export function ProjectDetailModal({
           <X size={16} />
         </button>
 
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-            Project Detail
-          </p>
-          <h3 id={modalTitleId} className="mt-2 pr-12 text-2xl font-bold text-text">
-            {project.title}
-          </h3>
-        </div>
-
-        <p className="mt-6 text-sm leading-7 text-muted md:text-base">{project.summary}</p>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <div className="rounded-xl border border-slate-300/35 bg-surface-soft/70 p-4 dark:border-slate-700">
-            <p className="text-xs uppercase tracking-wide text-muted">Role</p>
-            <p className="mt-2 text-sm font-semibold text-text">{project.role}</p>
+        <div className="overflow-y-auto pr-1">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
+              Project Detail
+            </p>
+            <h3 id={modalTitleId} className="mt-2 pr-12 text-2xl font-bold text-text">
+              {project.title}
+            </h3>
           </div>
-          <div className="rounded-xl border border-slate-300/35 bg-surface-soft/70 p-4 dark:border-slate-700">
-            <p className="text-xs uppercase tracking-wide text-muted">Impact</p>
-            <p className="mt-2 text-sm leading-6 text-text">{project.impact}</p>
-          </div>
-        </div>
 
-        {project.details && project.details.length > 0 && (
+          <p className="mt-6 text-sm leading-7 text-muted md:text-base">{project.summary}</p>
+
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <div className="rounded-xl border border-slate-300/35 bg-surface-soft/70 p-4 dark:border-slate-700">
+              <p className="text-xs uppercase tracking-wide text-muted">Role</p>
+              <p className="mt-2 text-sm font-semibold text-text">{project.role}</p>
+            </div>
+            <div className="rounded-xl border border-slate-300/35 bg-surface-soft/70 p-4 dark:border-slate-700">
+              <p className="text-xs uppercase tracking-wide text-muted">Impact</p>
+              <p className="mt-2 text-sm leading-6 text-text">{project.impact}</p>
+            </div>
+          </div>
+
+          {project.details && project.details.length > 0 && (
+            <div className="mt-6">
+              <p className="text-xs uppercase tracking-wide text-muted">Highlights</p>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
+                {project.details.map((detail) => (
+                  <li key={detail}>{detail}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           <div className="mt-6">
-            <p className="text-xs uppercase tracking-wide text-muted">Highlights</p>
-            <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
-              {project.details.map((detail) => (
-                <li key={detail}>{detail}</li>
+            <p className="text-xs uppercase tracking-wide text-muted">Tech Stack</p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {project.stack.map((tech) => (
+                <li key={tech} className={`chip rounded-md ${getTechBadgeTone(tech)}`}>
+                  {tech}
+                </li>
               ))}
             </ul>
           </div>
-        )}
-
-        <div className="mt-6">
-          <p className="text-xs uppercase tracking-wide text-muted">Tech Stack</p>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {project.stack.map((tech) => (
-              <li key={tech} className={`chip rounded-md ${getTechBadgeTone(tech)}`}>
-                {tech}
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </div>
