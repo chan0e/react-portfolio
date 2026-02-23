@@ -1,0 +1,52 @@
+<svg width="1280" height="520" viewBox="0 0 1280 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="520" fill="#0B1324"/>
+  <text x="40" y="56" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700">
+    Notion Sync Architecture (Overview)
+  </text>
+  <text x="40" y="86" fill="#93A4BF" font-family="Segoe UI, Arial, sans-serif" font-size="16">
+    Notion -> Spring Boot Sync API -> PostgreSQL -> Public REST API -> React Portfolio
+  </text>
+
+  <rect x="40" y="160" width="200" height="110" rx="14" fill="#152238" stroke="#3B82F6" stroke-width="2"/>
+  <text x="72" y="205" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Notion</text>
+  <text x="72" y="232" fill="#93A4BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">Data Source</text>
+
+  <rect x="300" y="140" width="270" height="150" rx="14" fill="#152238" stroke="#60A5FA" stroke-width="2"/>
+  <text x="330" y="188" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Spring Boot</text>
+  <text x="330" y="214" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="20">Sync API</text>
+  <text x="330" y="244" fill="#93A4BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">Webhook + Polling</text>
+
+  <rect x="630" y="160" width="220" height="110" rx="14" fill="#152238" stroke="#38BDF8" stroke-width="2"/>
+  <text x="670" y="205" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">PostgreSQL</text>
+  <text x="670" y="232" fill="#93A4BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">Single Source for API</text>
+
+  <rect x="910" y="160" width="190" height="110" rx="14" fill="#152238" stroke="#3B82F6" stroke-width="2"/>
+  <text x="944" y="205" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">REST API</text>
+  <text x="944" y="232" fill="#93A4BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">/api/v1/portfolio</text>
+
+  <rect x="1060" y="330" width="180" height="110" rx="14" fill="#152238" stroke="#60A5FA" stroke-width="2"/>
+  <text x="1092" y="375" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">React(Vite)</text>
+  <text x="1092" y="402" fill="#93A4BF" font-family="Segoe UI, Arial, sans-serif" font-size="15">Portfolio UI</text>
+
+  <line x1="240" y1="215" x2="300" y2="215" stroke="#93C5FD" stroke-width="3"/>
+  <polygon points="300,215 288,208 288,222" fill="#93C5FD"/>
+  <text x="248" y="196" fill="#BFDBFE" font-family="Segoe UI, Arial, sans-serif" font-size="13">Webhook</text>
+
+  <line x1="570" y1="215" x2="630" y2="215" stroke="#93C5FD" stroke-width="3"/>
+  <polygon points="630,215 618,208 618,222" fill="#93C5FD"/>
+  <text x="580" y="196" fill="#BFDBFE" font-family="Segoe UI, Arial, sans-serif" font-size="13">Upsert</text>
+
+  <line x1="850" y1="215" x2="910" y2="215" stroke="#93C5FD" stroke-width="3"/>
+  <polygon points="910,215 898,208 898,222" fill="#93C5FD"/>
+  <text x="861" y="196" fill="#BFDBFE" font-family="Segoe UI, Arial, sans-serif" font-size="13">Read</text>
+
+  <line x1="1000" y1="270" x2="1140" y2="330" stroke="#93C5FD" stroke-width="3"/>
+  <polygon points="1140,330 1128,322 1132,336" fill="#93C5FD"/>
+  <text x="1028" y="310" fill="#BFDBFE" font-family="Segoe UI, Arial, sans-serif" font-size="13">Fetch</text>
+
+  <rect x="300" y="340" width="300" height="95" rx="12" fill="#0F1A2F" stroke="#475569" stroke-width="1.5"/>
+  <text x="322" y="374" fill="#E5E7EB" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">Resilience</text>
+  <text x="322" y="401" fill="#93A4BF" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+    Retry + Backoff + Idempotency + Polling fallback
+  </text>
+</svg>
