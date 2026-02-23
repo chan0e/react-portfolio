@@ -48,6 +48,11 @@ export const portfolioData: PortfolioData = {
       stack: ['React', 'TypeScript', 'Storybook', 'Tailwind CSS'],
       role: '프론트엔드 리드',
       impact: '컴포넌트 재사용률 40% 향상, 신규 화면 개발 리드타임 30% 단축',
+      details: [
+        '디자인 토큰, 컴포넌트 가이드, 코드 예제를 단일 포털로 통합했습니다.',
+        '버전 정책과 변경 이력을 문서화해 팀 간 커뮤니케이션 비용을 줄였습니다.',
+        'Storybook 기반 검수 플로우로 릴리즈 안정성을 높였습니다.',
+      ],
       links: {
         demo: 'https://example.com',
         github: 'https://github.com/chan0e/react-portfolio',
@@ -59,6 +64,11 @@ export const portfolioData: PortfolioData = {
       stack: ['React', 'Vite', 'TanStack Query', 'Chart.js'],
       role: '프론트엔드 개발',
       impact: '대시보드 초기 로딩 25% 개선, 운영팀 반복 업무 시간 절감',
+      details: [
+        '데이터 페칭/캐싱 전략을 분리해 화면 전환 시 체감 성능을 개선했습니다.',
+        '차트와 테이블 컴포넌트를 재사용 가능한 구조로 설계했습니다.',
+        '지표 알림 UX를 개선해 운영팀의 이상 징후 탐지 시간을 단축했습니다.',
+      ],
       links: {
         demo: 'https://example.com',
         github: 'https://github.com/chan0e/react-portfolio',
@@ -70,6 +80,11 @@ export const portfolioData: PortfolioData = {
       stack: ['React', 'Vite', 'Tailwind CSS'],
       role: '개인 프로젝트',
       impact: '다크모드/반응형/재사용 컴포넌트 구조를 포함한 기준 템플릿 수립',
+      details: [
+        '섹션 단위 컴포넌트 구조와 데이터 주도 렌더링 방식을 적용했습니다.',
+        '모달, 테마 전환 등 인터랙션을 접근성 기준에 맞춰 구현했습니다.',
+        '타이포/간격/색상 토큰을 정리해 확장 가능한 UI 기반을 만들었습니다.',
+      ],
       links: {
         demo: 'https://example.com',
         github: 'https://github.com/chan0e/react-portfolio',

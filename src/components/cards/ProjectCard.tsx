@@ -2,9 +2,10 @@ import type { Project } from '../../types/portfolio';
 
 interface ProjectCardProps {
   project: Project;
+  onOpenDetail: (project: Project) => void;
 }
 
-export function ProjectCard({ project }: ProjectCardProps): JSX.Element {
+export function ProjectCard({ project, onOpenDetail }: ProjectCardProps): JSX.Element {
   return (
     <article className="glass-card card-lift flex h-full flex-col p-6 md:p-8">
       <div className="flex items-start justify-between gap-4">
@@ -25,14 +26,14 @@ export function ProjectCard({ project }: ProjectCardProps): JSX.Element {
         ))}
       </ul>
       <div className="mt-8 flex gap-3">
-        <a
+        <button
+          type="button"
           className="btn-primary px-4 py-2 text-xs"
-          href={project.links.demo}
-          target="_blank"
-          rel="noreferrer"
+          onClick={() => onOpenDetail(project)}
+          aria-label={`${project.title} 상세 보기`}
         >
-          Demo
-        </a>
+          Detail
+        </button>
         <a
           className="btn-ghost px-4 py-2 text-xs"
           href={project.links.github}

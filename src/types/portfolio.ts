@@ -32,6 +32,7 @@ export interface Project {
   stack: string[];
   role: string;
   impact: string;
+  details?: string[];
   links: ProjectLinks;
 }
 

@@ -1,8 +1,21 @@
+import { useState } from 'react';
 import { SectionTitle } from '../components/SectionTitle';
 import { ProjectCard } from '../components/cards/ProjectCard';
+import { ProjectDetailModal } from '../components/modals/ProjectDetailModal';
 import { portfolioData } from '../data/portfolioData';
+import type { Project } from '../types/portfolio';
 
 export function ProjectsSection(): JSX.Element {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const handleOpenDetail = (project: Project): void => {
+    setSelectedProject(project);
+  };
+
+  const handleCloseDetail = (): void => {
+    setSelectedProject(null);
+  };
+
   return (
     <section id="projects" className="section-wrap section-space section-divider">
       <SectionTitle
@@ -11,9 +24,18 @@ export function ProjectsSection(): JSX.Element {
       />
       <div className="grid gap-6 fade-up xl:grid-cols-2">
         {portfolioData.projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+          <ProjectCard
+            key={project.title}
+            project={project}
+            onOpenDetail={handleOpenDetail}
+          />
         ))}
       </div>
+      <ProjectDetailModal
+        isOpen={selectedProject !== null}
+        project={selectedProject}
+        onClose={handleCloseDetail}
+      />
     </section>
   );
 }
