@@ -11,9 +11,11 @@ export function ContactSection(): JSX.Element {
       <div className="glass-card card-lift p-6 md:p-8">
         <p className="text-base leading-7 text-muted">{portfolioData.contact.message}</p>
         <ul className="mt-6 space-y-4 text-sm text-muted">
-          <li className="text-sm md:text-base">Email: {portfolioData.contact.email}</li>
+          <li className="text-sm md:text-base">
+            <span className="font-bold text-text">Email:</span> {portfolioData.contact.email}
+          </li>
           <li>
-            GitHub:{' '}
+            <span className="font-bold text-text">GitHub:</span>{' '}
             <a
               className="contact-link ml-2"
               href={portfolioData.contact.github}
@@ -24,7 +26,7 @@ export function ContactSection(): JSX.Element {
             </a>
           </li>
           <li>
-            LinkedIn:{' '}
+            <span className="font-bold text-text">LinkedIn:</span>{' '}
             <a
               className="contact-link ml-2"
               href={portfolioData.contact.linkedin}
@@ -35,7 +37,7 @@ export function ContactSection(): JSX.Element {
             </a>
           </li>
           <li>
-            Blog:{' '}
+            <span className="font-bold text-text">Blog:</span>{' '}
             <a
               className="contact-link ml-2"
               href={portfolioData.contact.blog}
