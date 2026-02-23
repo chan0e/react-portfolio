@@ -3,17 +3,14 @@ import { portfolioData } from '../data/portfolioData';
 
 export function ContactSection(): JSX.Element {
   return (
-    <section
-      id="contact"
-      className="section-wrap section-space section-divider"
-    >
+    <section id="contact" className="section-wrap section-space section-divider">
       <SectionTitle
         title="Contact"
         description="협업 또는 채용 관련 문의는 아래 채널로 연락해주세요."
       />
-      <div className="glass-card card-lift p-6">
-        <p className="text-sm md:text-base">{portfolioData.contact.message}</p>
-        <ul className="mt-4 space-y-3 text-sm text-muted">
+      <div className="glass-card card-lift p-6 md:p-8">
+        <p className="text-base leading-7 text-muted">{portfolioData.contact.message}</p>
+        <ul className="mt-6 space-y-4 text-sm text-muted">
           <li className="text-sm md:text-base">Email: {portfolioData.contact.email}</li>
           <li>
             GitHub:{' '}

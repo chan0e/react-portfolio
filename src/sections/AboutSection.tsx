@@ -3,15 +3,12 @@ import { portfolioData } from '../data/portfolioData';
 
 export function AboutSection(): JSX.Element {
   return (
-    <section
-      id="about"
-      className="section-wrap section-space section-divider"
-    >
+    <section id="about" className="section-wrap section-space section-divider">
       <SectionTitle
         title="About"
         description="문제 정의부터 구현, 개선까지 책임지는 개발 문화를 지향합니다."
       />
-      <div className="glass-card card-lift space-y-4 p-6 md:p-7">
+      <div className="glass-card card-lift space-y-4 p-6 md:p-8">
         {portfolioData.profile.bio.map((line) => (
           <p key={line} className="max-w-3xl text-sm leading-7 text-muted md:text-base">
             {line}
