@@ -1,4 +1,5 @@
 import type { Project } from '../../types/portfolio';
+import { getTechBadgeTone } from '../../utils/techBadge';
 
 interface ProjectCardProps {
   project: Project;
@@ -20,7 +21,7 @@ export function ProjectCard({ project, onOpenDetail }: ProjectCardProps): JSX.El
       </p>
       <ul className="mt-6 flex flex-wrap gap-2">
         {project.stack.map((item) => (
-          <li key={item} className="chip rounded-md">
+          <li key={item} className={`chip rounded-md ${getTechBadgeTone(item)}`}>
             {item}
           </li>
         ))}

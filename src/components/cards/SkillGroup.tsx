@@ -1,4 +1,5 @@
 import type { SkillGroup as SkillGroupModel } from '../../types/portfolio';
+import { getTechBadgeTone } from '../../utils/techBadge';
 
 interface SkillGroupProps {
   group: SkillGroupModel;
@@ -10,7 +11,7 @@ export function SkillGroup({ group }: SkillGroupProps): JSX.Element {
       <h3 className="text-lg font-semibold tracking-tight text-text">{group.category}</h3>
       <ul className="mt-4 flex flex-wrap gap-2">
         {group.items.map((item) => (
-          <li key={item} className="chip">
+          <li key={item} className={`chip ${getTechBadgeTone(item)}`}>
             {item}
           </li>
         ))}

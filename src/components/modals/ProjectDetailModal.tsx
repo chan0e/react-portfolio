@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 import type { Project } from '../../types/portfolio';
+import { getTechBadgeTone } from '../../utils/techBadge';
 
 interface ProjectDetailModalProps {
   isOpen: boolean;
@@ -156,7 +157,7 @@ export function ProjectDetailModal({
           <p className="text-xs uppercase tracking-wide text-muted">Tech Stack</p>
           <ul className="mt-3 flex flex-wrap gap-2">
             {project.stack.map((tech) => (
-              <li key={tech} className="chip rounded-md">
+              <li key={tech} className={`chip rounded-md ${getTechBadgeTone(tech)}`}>
                 {tech}
               </li>
             ))}
