@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { SectionTitle } from '../components/SectionTitle';
 import { ProjectCard } from '../components/cards/ProjectCard';
 import { ProjectDetailModal } from '../components/modals/ProjectDetailModal';
-import { portfolioData } from '../data/portfolioData';
 import type { Project } from '../types/portfolio';
 import {
   fadeInUp,
@@ -12,7 +11,11 @@ import {
   staggerContainer,
 } from '../utils/animations';
 
-export function ProjectsSection(): JSX.Element {
+interface ProjectsSectionProps {
+  projects: Project[];
+}
+
+export function ProjectsSection({ projects }: ProjectsSectionProps): JSX.Element {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const handleOpenDetail = (project: Project): void => {
@@ -44,7 +47,7 @@ export function ProjectsSection(): JSX.Element {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        {portfolioData.projects.map((project) => (
+        {projects.map((project) => (
           <motion.div key={project.title} variants={fadeInUp}>
             <ProjectCard
               project={project}

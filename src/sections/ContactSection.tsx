@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion';
 import { SectionTitle } from '../components/SectionTitle';
-import { portfolioData } from '../data/portfolioData';
+import type { Contact } from '../types/portfolio';
 import { fadeInUp, sectionTransition, sectionViewport } from '../utils/animations';
 
-export function ContactSection(): JSX.Element {
+interface ContactSectionProps {
+  contact: Contact;
+}
+
+export function ContactSection({ contact }: ContactSectionProps): JSX.Element {
   return (
     <motion.section
       id="contact"
@@ -19,16 +23,16 @@ export function ContactSection(): JSX.Element {
         description="협업 또는 채용 관련 문의는 아래 채널로 연락해주세요."
       />
       <div className="glass-card card-lift p-6 md:p-8">
-        <p className="text-base leading-7 text-muted">{portfolioData.contact.message}</p>
+        <p className="text-base leading-7 text-muted">{contact.message}</p>
         <ul className="mt-6 space-y-4 text-sm text-muted">
           <li className="text-sm md:text-base">
-            <span className="font-bold text-text">Email:</span> {portfolioData.contact.email}
+            <span className="font-bold text-text">Email:</span> {contact.email}
           </li>
           <li>
             <span className="font-bold text-text">GitHub:</span>{' '}
             <a
               className="contact-link ml-2"
-              href={portfolioData.contact.github}
+              href={contact.github}
               target="_blank"
               rel="noreferrer"
             >
@@ -39,7 +43,7 @@ export function ContactSection(): JSX.Element {
             <span className="font-bold text-text">LinkedIn:</span>{' '}
             <a
               className="contact-link ml-2"
-              href={portfolioData.contact.linkedin}
+              href={contact.linkedin}
               target="_blank"
               rel="noreferrer"
             >
@@ -50,7 +54,7 @@ export function ContactSection(): JSX.Element {
             <span className="font-bold text-text">Blog:</span>{' '}
             <a
               className="contact-link ml-2"
-              href={portfolioData.contact.blog}
+              href={contact.blog}
               target="_blank"
               rel="noreferrer"
             >

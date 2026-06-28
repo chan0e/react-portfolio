@@ -1,21 +1,22 @@
 import { ThemeToggle } from './ThemeToggle';
-import { portfolioData } from '../data/portfolioData';
-import type { Theme } from '../types/portfolio';
+import type { NavItem, Profile, Theme } from '../types/portfolio';
 
 interface HeaderProps {
   theme: Theme;
   onToggle: () => void;
+  profile: Profile;
+  navItems: NavItem[];
 }
 
-export function Header({ theme, onToggle }: HeaderProps): JSX.Element {
+export function Header({ theme, onToggle, profile, navItems }: HeaderProps): JSX.Element {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-300/20 bg-bg/70 backdrop-blur-xl dark:border-slate-700/40">
       <div className="section-wrap flex h-16 items-center justify-between">
         <a href="#hero" className="brand-font text-lg font-bold tracking-tight">
-          {portfolioData.profile.name}
+          {profile.name}
         </a>
         <nav className="hidden gap-5 md:flex" aria-label="메인 메뉴">
-          {portfolioData.navItems.map((item) => (
+          {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
@@ -31,7 +32,7 @@ export function Header({ theme, onToggle }: HeaderProps): JSX.Element {
         className="section-wrap flex gap-2 overflow-x-auto pb-3 md:hidden"
         aria-label="모바일 메뉴"
       >
-        {portfolioData.navItems.map((item) => (
+        {navItems.map((item) => (
           <a
             key={item.id}
             href={`#${item.id}`}

@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion';
 import { SectionTitle } from '../components/SectionTitle';
-import { portfolioData } from '../data/portfolioData';
+import type { Profile } from '../types/portfolio';
 import { fadeInUp, sectionTransition, sectionViewport } from '../utils/animations';
 
-export function AboutSection(): JSX.Element {
+interface AboutSectionProps {
+  profile: Profile;
+}
+
+export function AboutSection({ profile }: AboutSectionProps): JSX.Element {
   return (
     <motion.section
       id="about"
@@ -19,7 +23,7 @@ export function AboutSection(): JSX.Element {
         description="문제 정의부터 구현, 개선까지 책임지는 개발 문화를 지향합니다."
       />
       <div className="glass-card card-lift space-y-4 p-6 md:p-8">
-        {portfolioData.profile.bio.map((line) => (
+        {profile.bio.map((line) => (
           <p key={line} className="max-w-3xl text-sm leading-7 text-muted md:text-base">
             {line}
           </p>

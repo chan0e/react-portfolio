@@ -1,5 +1,18 @@
-﻿node_modules/
+node_modules/
 dist/
 .vite/
 .DS_Store
 *.log
+
+# 환경변수 (절대 git에 올리면 안됨)
+.env
+.env.local
+.env.*.local
+
+# Local agent/docs
+.claude/
+docs/
+AGENT.md
+CLAUDE.md
+tasks/
+supabase

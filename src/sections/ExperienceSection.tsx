@@ -1,9 +1,13 @@
 import { motion } from 'framer-motion';
 import { SectionTitle } from '../components/SectionTitle';
-import { portfolioData } from '../data/portfolioData';
+import type { Experience } from '../types/portfolio';
 import { fadeInUp, sectionTransition, sectionViewport } from '../utils/animations';
 
-export function ExperienceSection(): JSX.Element {
+interface ExperienceSectionProps {
+  experience: Experience[];
+}
+
+export function ExperienceSection({ experience }: ExperienceSectionProps): JSX.Element {
   return (
     <motion.section
       id="experience"
@@ -16,7 +20,7 @@ export function ExperienceSection(): JSX.Element {
     >
       <SectionTitle title="Experience" description="경력과 주요 성과를 타임라인 형태로 정리했습니다." />
       <div className="space-y-4">
-        {portfolioData.experience.map((item) => (
+        {experience.map((item) => (
           <article
             key={`${item.company}-${item.period}`}
             className="glass-card card-lift"

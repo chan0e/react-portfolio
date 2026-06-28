@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { SectionTitle } from '../components/SectionTitle';
 import { SkillGroup } from '../components/cards/SkillGroup';
-import { portfolioData } from '../data/portfolioData';
+import type { SkillGroup as SkillGroupModel } from '../types/portfolio';
 import {
   fadeInUp,
   sectionTransition,
@@ -9,7 +9,11 @@ import {
   staggerContainer,
 } from '../utils/animations';
 
-export function SkillsSection(): JSX.Element {
+interface SkillsSectionProps {
+  skills: SkillGroupModel[];
+}
+
+export function SkillsSection({ skills }: SkillsSectionProps): JSX.Element {
   return (
     <motion.section
       id="skills"
@@ -31,7 +35,7 @@ export function SkillsSection(): JSX.Element {
         viewport={{ once: true }}
         variants={staggerContainer}
       >
-        {portfolioData.skills.map((group) => (
+        {skills.map((group) => (
           <motion.div key={group.category} variants={fadeInUp}>
             <SkillGroup group={group} />
           </motion.div>

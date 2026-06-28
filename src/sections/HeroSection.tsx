@@ -1,10 +1,16 @@
 import { motion } from 'framer-motion';
-import { portfolioData } from '../data/portfolioData';
+import type { Profile, Project, SkillGroup } from '../types/portfolio';
 import { fadeInUp, sectionTransition, sectionViewport } from '../utils/animations';
 
-export function HeroSection(): JSX.Element {
-  const projectCount = portfolioData.projects.length;
-  const skillCategoryCount = portfolioData.skills.length;
+interface HeroSectionProps {
+  profile: Profile;
+  projects: Project[];
+  skills: SkillGroup[];
+}
+
+export function HeroSection({ profile, projects, skills }: HeroSectionProps): JSX.Element {
+  const projectCount = projects.length;
+  const skillCategoryCount = skills.length;
 
   return (
     <motion.section
@@ -20,10 +26,10 @@ export function HeroSection(): JSX.Element {
         <div className="max-w-3xl">
           <p className="hero-kicker">Frontend Portfolio</p>
           <h1 className="mt-6 text-4xl font-bold leading-[1.08] text-text md:text-6xl">
-            {portfolioData.profile.headline}
+            {profile.headline}
           </h1>
           <p className="mt-6 text-base leading-7 text-muted md:text-lg md:leading-8">
-            {portfolioData.profile.summary}
+            {profile.summary}
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <a href="#projects" className="btn-primary min-w-[136px] text-center">
@@ -42,8 +48,8 @@ export function HeroSection(): JSX.Element {
         <aside className="hero-panel">
           <div className="profile-photo-wrap">
             <img
-              src={portfolioData.profile.photoSrc}
-              alt={portfolioData.profile.photoAlt}
+              src={profile.photoSrc}
+              alt={profile.photoAlt}
               className="profile-photo"
               loading="eager"
             />
@@ -51,8 +57,8 @@ export function HeroSection(): JSX.Element {
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Profile Snapshot
           </p>
-          <h2 className="mt-3 text-2xl font-bold text-text">{portfolioData.profile.role}</h2>
-          <p className="mt-2 text-sm text-muted">{portfolioData.profile.location}</p>
+          <h2 className="mt-3 text-2xl font-bold text-text">{profile.role}</h2>
+          <p className="mt-2 text-sm text-muted">{profile.location}</p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <div className="hero-meta">
               <p className="text-xs text-muted">Projects</p>
