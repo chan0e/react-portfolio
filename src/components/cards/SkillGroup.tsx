@@ -1,4 +1,6 @@
+import { motion } from 'framer-motion';
 import type { SkillGroup as SkillGroupModel } from '../../types/portfolio';
+import { scaleOnHover } from '../../utils/animations';
 import { getTechBadgeTone } from '../../utils/techBadge';
 
 interface SkillGroupProps {
@@ -7,7 +9,10 @@ interface SkillGroupProps {
 
 export function SkillGroup({ group }: SkillGroupProps): JSX.Element {
   return (
-    <article className="glass-card card-lift p-6 md:p-7">
+    <motion.article
+      className="glass-card card-lift p-6 md:p-7"
+      whileHover={scaleOnHover}
+    >
       <h3 className="text-lg font-semibold tracking-tight text-text">{group.category}</h3>
       <ul className="mt-4 flex flex-wrap gap-2">
         {group.items.map((item) => (
@@ -16,6 +21,6 @@ export function SkillGroup({ group }: SkillGroupProps): JSX.Element {
           </li>
         ))}
       </ul>
-    </article>
+    </motion.article>
   );
 }

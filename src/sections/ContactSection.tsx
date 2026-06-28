@@ -1,9 +1,19 @@
+import { motion } from 'framer-motion';
 import { SectionTitle } from '../components/SectionTitle';
 import { portfolioData } from '../data/portfolioData';
+import { fadeInUp, sectionTransition, sectionViewport } from '../utils/animations';
 
 export function ContactSection(): JSX.Element {
   return (
-    <section id="contact" className="section-wrap section-space section-divider">
+    <motion.section
+      id="contact"
+      className="section-wrap section-space section-divider"
+      initial="hidden"
+      whileInView="visible"
+      viewport={sectionViewport}
+      variants={fadeInUp}
+      transition={sectionTransition}
+    >
       <SectionTitle
         title="Contact"
         description="협업 또는 채용 관련 문의는 아래 채널로 연락해주세요."
@@ -49,6 +59,6 @@ export function ContactSection(): JSX.Element {
           </li>
         </ul>
       </div>
-    </section>
+    </motion.section>
   );
 }

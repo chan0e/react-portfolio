@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
 import type { Project } from '../../types/portfolio';
+import { modalBackdrop, modalPanel } from '../../utils/animations';
 import { getTechBadgeTone } from '../../utils/techBadge';
 
 interface ProjectDetailModalProps {
@@ -86,86 +88,95 @@ export function ProjectDetailModal({
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen || !project) {
-    return null;
-  }
-
-  const modalTitleId = `project-modal-title-${project.title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')}`;
+  const modalTitleId = project
+    ? `project-modal-title-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
+    : undefined;
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 md:p-8">
-      <button
-        type="button"
-        aria-label="프로젝트 상세 팝업 닫기"
-        onClick={onClose}
-        className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px]"
-      />
-
-      <div
-        ref={modalRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={modalTitleId}
-        className="relative z-10 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-slate-300/45 bg-surface/95 p-6 shadow-2xl dark:border-slate-600/50 dark:bg-surface-soft/95 md:p-8"
-      >
-        <button
-          ref={closeButtonRef}
-          type="button"
-          onClick={onClose}
-          aria-label="프로젝트 상세 팝업 닫기"
-          className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300/50 text-muted transition hover:bg-slate-100/70 hover:text-text dark:border-slate-600 dark:hover:bg-slate-800/70"
+    <AnimatePresence>
+      {isOpen && project && modalTitleId && (
+        <motion.div
+          key={project.title}
+          className="fixed inset-0 z-[70] flex items-center justify-center p-4 md:p-8"
+          initial="hidden"
+          animate="visible"
+          exit="exit"
         >
-          <X size={16} />
-        </button>
+          <motion.button
+            type="button"
+            aria-label="프로젝트 상세 팝업 닫기"
+            onClick={onClose}
+            className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px]"
+            variants={modalBackdrop}
+          />
 
-        <div className="overflow-y-auto pr-1">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
-              Project Detail
-            </p>
-            <h3 id={modalTitleId} className="mt-2 pr-12 text-2xl font-bold text-text">
-              {project.title}
-            </h3>
-          </div>
+          <motion.div
+            ref={modalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={modalTitleId}
+            className="relative z-10 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-slate-300/45 bg-surface/95 p-6 shadow-2xl dark:border-slate-600/50 dark:bg-surface-soft/95 md:p-8"
+            variants={modalPanel}
+            transition={{ duration: 0.2 }}
+          >
+            <button
+              ref={closeButtonRef}
+              type="button"
+              onClick={onClose}
+              aria-label="프로젝트 상세 팝업 닫기"
+              className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-300/50 text-muted transition hover:bg-slate-100/70 hover:text-text dark:border-slate-600 dark:hover:bg-slate-800/70"
+            >
+              <X size={16} />
+            </button>
 
-          <p className="mt-6 text-sm leading-7 text-muted md:text-base">{project.summary}</p>
+            <div className="overflow-y-auto pr-1">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">
+                  Project Detail
+                </p>
+                <h3 id={modalTitleId} className="mt-2 pr-12 text-2xl font-bold text-text">
+                  {project.title}
+                </h3>
+              </div>
 
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <div className="rounded-xl border border-slate-300/35 bg-surface-soft/70 p-4 dark:border-slate-700">
-              <p className="text-xs uppercase tracking-wide text-muted">Role</p>
-              <p className="mt-2 text-sm font-semibold text-text">{project.role}</p>
+              <p className="mt-6 text-sm leading-7 text-muted md:text-base">{project.summary}</p>
+
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                <div className="rounded-xl border border-slate-300/35 bg-surface-soft/70 p-4 dark:border-slate-700">
+                  <p className="text-xs uppercase tracking-wide text-muted">Role</p>
+                  <p className="mt-2 text-sm font-semibold text-text">{project.role}</p>
+                </div>
+                <div className="rounded-xl border border-slate-300/35 bg-surface-soft/70 p-4 dark:border-slate-700">
+                  <p className="text-xs uppercase tracking-wide text-muted">Impact</p>
+                  <p className="mt-2 text-sm leading-6 text-text">{project.impact}</p>
+                </div>
+              </div>
+
+              {project.details && project.details.length > 0 && (
+                <div className="mt-6">
+                  <p className="text-xs uppercase tracking-wide text-muted">Highlights</p>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
+                    {project.details.map((detail) => (
+                      <li key={detail}>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <div className="mt-6">
+                <p className="text-xs uppercase tracking-wide text-muted">Tech Stack</p>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {project.stack.map((tech) => (
+                    <li key={tech} className={`chip rounded-md ${getTechBadgeTone(tech)}`}>
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className="rounded-xl border border-slate-300/35 bg-surface-soft/70 p-4 dark:border-slate-700">
-              <p className="text-xs uppercase tracking-wide text-muted">Impact</p>
-              <p className="mt-2 text-sm leading-6 text-text">{project.impact}</p>
-            </div>
-          </div>
-
-          {project.details && project.details.length > 0 && (
-            <div className="mt-6">
-              <p className="text-xs uppercase tracking-wide text-muted">Highlights</p>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-6 text-muted">
-                {project.details.map((detail) => (
-                  <li key={detail}>{detail}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <div className="mt-6">
-            <p className="text-xs uppercase tracking-wide text-muted">Tech Stack</p>
-            <ul className="mt-3 flex flex-wrap gap-2">
-              {project.stack.map((tech) => (
-                <li key={tech} className={`chip rounded-md ${getTechBadgeTone(tech)}`}>
-                  {tech}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

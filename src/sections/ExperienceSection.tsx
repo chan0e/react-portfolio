@@ -1,11 +1,18 @@
+import { motion } from 'framer-motion';
 import { SectionTitle } from '../components/SectionTitle';
 import { portfolioData } from '../data/portfolioData';
+import { fadeInUp, sectionTransition, sectionViewport } from '../utils/animations';
 
 export function ExperienceSection(): JSX.Element {
   return (
-    <section
+    <motion.section
       id="experience"
       className="section-wrap section-space section-divider"
+      initial="hidden"
+      whileInView="visible"
+      viewport={sectionViewport}
+      variants={fadeInUp}
+      transition={sectionTransition}
     >
       <SectionTitle title="Experience" description="경력과 주요 성과를 타임라인 형태로 정리했습니다." />
       <div className="space-y-4">
@@ -28,6 +35,6 @@ export function ExperienceSection(): JSX.Element {
           </article>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -1,4 +1,6 @@
+import { motion } from 'framer-motion';
 import type { Project } from '../../types/portfolio';
+import { scaleOnHover } from '../../utils/animations';
 import { getTechBadgeTone } from '../../utils/techBadge';
 
 interface ProjectCardProps {
@@ -8,7 +10,10 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, onOpenDetail }: ProjectCardProps): JSX.Element {
   return (
-    <article className="glass-card card-lift flex h-full flex-col p-6 md:p-8">
+    <motion.article
+      className="glass-card card-lift flex h-full flex-col p-6 md:p-8"
+      whileHover={scaleOnHover}
+    >
       <div className="flex items-start justify-between gap-4">
         <h3 className="text-xl font-bold tracking-tight text-text">{project.title}</h3>
         <span className="rounded-full bg-accent/20 px-3 py-1 text-xs font-semibold tracking-wide text-accent">
@@ -44,6 +49,6 @@ export function ProjectCard({ project, onOpenDetail }: ProjectCardProps): JSX.El
           GitHub
         </a>
       </div>
-    </article>
+    </motion.article>
   );
 }

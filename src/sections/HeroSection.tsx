@@ -1,11 +1,21 @@
+import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
+import { fadeInUp, sectionTransition, sectionViewport } from '../utils/animations';
 
 export function HeroSection(): JSX.Element {
   const projectCount = portfolioData.projects.length;
   const skillCategoryCount = portfolioData.skills.length;
 
   return (
-    <section id="hero" className="section-wrap section-space fade-up">
+    <motion.section
+      id="hero"
+      className="section-wrap section-space"
+      initial="hidden"
+      whileInView="visible"
+      viewport={sectionViewport}
+      variants={fadeInUp}
+      transition={sectionTransition}
+    >
       <div className="hero-grid">
         <div className="max-w-3xl">
           <p className="hero-kicker">Frontend Portfolio</p>
@@ -55,6 +65,6 @@ export function HeroSection(): JSX.Element {
           </div>
         </aside>
       </div>
-    </section>
+    </motion.section>
   );
 }
