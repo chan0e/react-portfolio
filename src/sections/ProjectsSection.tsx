@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { motion } from 'framer-motion';
 import { SectionTitle } from '../components/SectionTitle';
 import { ProjectCard } from '../components/cards/ProjectCard';
-import { ProjectDetailModal } from '../components/modals/ProjectDetailModal';
 import type { Project } from '../types/portfolio';
 import {
   fadeInUp,
@@ -11,14 +10,22 @@ import {
   staggerContainer,
 } from '../utils/animations';
 
+const ProjectDetailModal = lazy(() =>
+  import('../components/modals/ProjectDetailModal').then((module) => ({
+    default: module.ProjectDetailModal,
+  }))
+);
+
 interface ProjectsSectionProps {
   projects: Project[];
 }
 
 export function ProjectsSection({ projects }: ProjectsSectionProps): JSX.Element {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [shouldLoadModal, setShouldLoadModal] = useState(false);
 
   const handleOpenDetail = (project: Project): void => {
+    setShouldLoadModal(true);
     setSelectedProject(project);
   };
 
@@ -56,11 +63,15 @@ export function ProjectsSection({ projects }: ProjectsSectionProps): JSX.Element
           </motion.div>
         ))}
       </motion.div>
-      <ProjectDetailModal
-        isOpen={selectedProject !== null}
-        project={selectedProject}
-        onClose={handleCloseDetail}
-      />
+      {shouldLoadModal && (
+        <Suspense fallback={null}>
+          <ProjectDetailModal
+            isOpen={selectedProject !== null}
+            project={selectedProject}
+            onClose={handleCloseDetail}
+          />
+        </Suspense>
+      )}
     </motion.section>
   );
 }
